@@ -6,7 +6,7 @@ Trabajo práctico del seminario **Gestión de Software Ágil asistido por Inteli
 Samuel Felipe Losada Rojas · Ingeniería de Software · Fundación Escuela Tecnológica de Neiva (FET)
 Docente: Camilo Morales Vargas
 
-🎥 **Video explicativo:** [VER VIDEO](ENLACE_DEL_VIDEO)
+🎥 **Video explicativo:** [https://youtu.be/b5nwPxbWSfg](https://youtu.be/b5nwPxbWSfg)
 
 ---
 
