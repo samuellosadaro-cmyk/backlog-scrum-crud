@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Backlog Scrum para organizar historias de usuario.">
+  <title>Backlog Scrum</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/storage.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-content">
+      <a class="brand" href="#" aria-label="Backlog Scrum, inicio">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>Backlog<span class="brand-light">Scrum</span></span>
+      </a>
+      <span class="topbar-note">GESTIÓN DE PRODUCTO</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">ESPACIO DE TRABAJO <span aria-hidden="true">/</span> PRODUCTO</p>
+        <h1 id="page-title">Backlog de historias</h1>
+        <p class="intro-copy">Organiza el trabajo del equipo, una historia a la vez.</p>
+      </div>
+      <div class="summary" aria-label="Resumen del backlog">
+        <span class="summary-label">HISTORIAS</span>
+        <span class="summary-value" id="story-count">0</span>
+      </div>
+    </section>
+
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+
+    <section class="workspace" aria-label="Gestión de historias">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <div class="heading-icon" aria-hidden="true">＋</div>
+          <div>
+            <h2 id="form-title">Nueva historia</h2>
+            <p id="form-hint">Añade una historia al backlog</p>
+          </div>
+        </div>
+
+        <form id="story-form">
+          <div class="field">
+            <label for="title">Título <span class="required">*</span></label>
+            <input id="title" name="title" type="text" maxlength="100" placeholder="Ej. Inicio de sesión" required>
+          </div>
+
+          <div class="field">
+            <label for="description">Descripción <span class="required">*</span></label>
+            <textarea id="description" name="description" rows="4" maxlength="1000" placeholder="Como usuario, quiero..." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="responsible">Responsable</label>
+            <input id="responsible" name="responsible" type="text" maxlength="80" placeholder="Nombre de quien se encargará">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="points">Puntos de historia <span class="required">*</span></label>
+              <input id="points" name="points" type="number" min="1" step="1" placeholder="Ej. 3" required>
+            </div>
+            <div class="field">
+              <label for="priority">Prioridad</label>
+              <select id="priority" name="priority">
+                <option value="alta">Alta</option>
+                <option value="media" selected>Media</option>
+                <option value="baja">Baja</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="status">Estado</label>
+            <select id="status" name="status">
+              <option value="por-hacer" selected>Por hacer</option>
+              <option value="en-progreso">En progreso</option>
+              <option value="hecho">Hecho</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button class="button button-primary" id="submit-button" type="submit">Agregar historia <span aria-hidden="true">→</span></button>
+            <button class="button button-quiet" id="cancel-edit" type="button" hidden>Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel backlog-panel" aria-labelledby="backlog-title">
+        <div class="backlog-heading">
+          <div>
+            <p class="eyebrow">PLANIFICACIÓN DEL EQUIPO</p>
+            <h2 id="backlog-title">Historias <span class="heading-count" id="heading-count">0</span></h2>
+          </div>
+          <span class="backlog-caption">PRIORIDAD · PUNTOS</span>
+        </div>
+        <div class="story-list" id="story-list" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-dialog-title" aria-describedby="delete-dialog-description">
+      <div class="confirm-dialog-content">
+        <div class="confirm-dialog-icon" aria-hidden="true">!</div>
+        <p class="eyebrow">CONFIRMAR ACCIÓN</p>
+        <h2 id="delete-dialog-title">¿Eliminar esta historia?</h2>
+        <p id="delete-dialog-description">Se eliminará <strong id="delete-story-name"></strong>. Esta acción no se puede deshacer.</p>
+        <div class="confirm-dialog-actions">
+          <button class="button button-quiet" id="cancel-delete" type="button">Cancelar</button>
+          <button class="button button-danger" id="confirm-delete" type="button">Sí, eliminar</button>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="footer">Tu backlog se guarda automáticamente en este dispositivo.</footer>
+  </main>
+</body>
+</html>
